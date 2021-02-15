@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+
     public Direction Direction;
+
+    public GameObject SpawnAlert;
+
     Vector3 _direction;
 
     private void Start()
@@ -37,5 +41,23 @@ public class Spawner : MonoBehaviour
 
         var itemGo = Instantiate(item, this.transform.position, rotation);
         itemGo.GetComponent<Item>().ConfigItem(Vector3.back, speed);
+
+        if (SpawnAlert != null)
+        {
+            if (_spawnAlertCo != null)
+            {
+                StopCoroutine(_spawnAlertCo);
+                SpawnAlert.SetActive(false);
+            }
+            _spawnAlertCo = StartCoroutine(SpawnAlertCo());
+        }
+    }
+
+    Coroutine _spawnAlertCo;
+    IEnumerator SpawnAlertCo()
+    {
+        SpawnAlert.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        SpawnAlert.SetActive(false);
     }
 }

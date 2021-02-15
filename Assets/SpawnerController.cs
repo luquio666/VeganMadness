@@ -8,15 +8,24 @@ public class SpawnerController : MonoBehaviour
     public float MaxSpawnSpeed, MinSpawnSpeed = 3f;
     public float MaxSpawnTime, MinSpawnTime;
     public GameObject[] Items;
+    bool _gameStarted;
+    Coroutine _spawnItemsCo;
 
-    private void Start()
+    public void StartGame()
     {
-        StartCoroutine(SpawnItemsCo());
+        _gameStarted = true;
+        _spawnItemsCo = StartCoroutine(SpawnItemsCo());
+    }
+
+    public void EndGame()
+    {
+        _gameStarted = false;
+        StopCoroutine(_spawnItemsCo);
     }
 
     IEnumerator SpawnItemsCo()
     {
-        while (true)
+        while (_gameStarted)
         {
             float rndSpawnTime = Random.Range(MinSpawnTime, MaxSpawnTime);
             yield return new WaitForSeconds(rndSpawnTime);

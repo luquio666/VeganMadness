@@ -18,15 +18,26 @@ public class Player : MonoBehaviour
     public float KickCooldown = .5f;
     public float KickAnim = .5f;
     public float KickFxSpeed = 3f;
+    public float KickDestroyTime = 1f;
     float _cooldown;
+    bool _gameStarted;
 
-    private void Start()
+    public void StartGame()
     {
+        _gameStarted = true;
         _cooldown = KickCooldown;
+    }
+
+    public void EndGame()
+    {
+        _gameStarted = false;
     }
 
     void Update()
     {
+        if (_gameStarted == false)
+            return;
+
         if (_cooldown > 0)
             _cooldown -= Time.deltaTime;
 
@@ -53,11 +64,6 @@ public class Player : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             TriggerAnim(Direction.LEFT);
-        }
-        else
-        {
-            // issue: this hides the foot instantly
-            //TriggerAnim(InputDirection.NONE);
         }
     }
 
@@ -100,8 +106,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(KickAnim/4f);
         Foot.SetActive(true);
 
-        var kickFX = Instantiate(KickSmoke, movement+Vector3.up, Quaternion.identity);
-        kickFX.GetComponent<KickFx>().ConfigKickFx(movement, KickFxSpeed);
+        var kickFX = Instantiate(KickSmoke, (movement/2)+Vector3.up, Quaternion.identity);
+        kickFX.GetComponent<KickFx>().ConfigKickFx(movement, KickFxSpeed, KickDestroyTime);
 
         yield return new WaitForSeconds(KickAnim);
         Foot.SetActive(false);

@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class KickFx : MonoBehaviour
 {
-    public float DestroyAfter = 2f;
     Vector3 _direction;
     float _speed;
 
-    public void ConfigKickFx(Vector3 direction, float speed)
+    public void ConfigKickFx(Vector3 direction, float speed, float destroyAfter)
     {
         _direction = direction;
         _speed = speed;
-        Invoke("AutoDestroy", 2.0f);
+        Invoke("AutoDestroy", destroyAfter);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "badFood")
         {
-            Debug.Log(Time.time+"_"+other.tag);
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }

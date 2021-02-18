@@ -1,0 +1,118 @@
+
+luquio.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eyes
+  rotate: false
+  xy: 436, 7
+  size: 112, 41
+  orig: 112, 41
+  offset: 0, 0
+  index: -1
+glasses
+  rotate: true
+  xy: 415, 48
+  size: 206, 73
+  orig: 206, 73
+  offset: 0, 0
+  index: -1
+hair_front
+  rotate: false
+  xy: 660, 80
+  size: 161, 174
+  orig: 208, 214
+  offset: 17, 29
+  index: -1
+hat
+  rotate: true
+  xy: 234, 18
+  size: 236, 181
+  orig: 270, 181
+  offset: 2, 0
+  index: -1
+head
+  rotate: false
+  xy: 0, 17
+  size: 234, 237
+  orig: 248, 272
+  offset: 7, 35
+  index: -1
+left_arm
+  rotate: true
+  xy: 821, 98
+  size: 156, 55
+  orig: 156, 55
+  offset: 0, 0
+  index: -1
+left_ear
+  rotate: true
+  xy: 886, 4
+  size: 39, 53
+  orig: 39, 53
+  offset: 0, 0
+  index: -1
+left_eyebrows
+  rotate: true
+  xy: 802, 20
+  size: 60, 31
+  orig: 122, 95
+  offset: 33, 27
+  index: -1
+left_foot
+  rotate: true
+  xy: 770, 15
+  size: 65, 32
+  orig: 70, 47
+  offset: 0, 7
+  index: -1
+left_leg
+  rotate: true
+  xy: 675, 15
+  size: 65, 95
+  orig: 65, 95
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: true
+  xy: 415, 0
+  size: 48, 21
+  orig: 48, 21
+  offset: 0, 0
+  index: -1
+right_arm
+  rotate: false
+  xy: 833, 43
+  size: 156, 55
+  orig: 156, 55
+  offset: 0, 0
+  index: -1
+right_ear
+  rotate: true
+  xy: 833, 3
+  size: 40, 53
+  orig: 40, 53
+  offset: 0, 0
+  index: -1
+right_foot
+  rotate: true
+  xy: 643, 11
+  size: 66, 32
+  orig: 71, 47
+  offset: 5, 7
+  index: -1
+right_leg
+  rotate: true
+  xy: 548, 11
+  size: 66, 95
+  orig: 66, 95
+  offset: 0, 0
+  index: -1
+torso
+  rotate: false
+  xy: 488, 77
+  size: 172, 177
+  orig: 186, 185
+  offset: 7, 8
+  index: -1

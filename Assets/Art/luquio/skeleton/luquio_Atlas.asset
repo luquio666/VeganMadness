@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
   m_Name: luquio_Atlas
   m_EditorClassIdentifier: 
-  atlasFile: {fileID: 4900000, guid: 27d5e1432c6c9d1409b17047352cfe5d, type: 3}
+  atlasFile: {fileID: 4900000, guid: 2e0510b5c0408504ab804efaa3d9cdc1, type: 3}
   materials:
-  - {fileID: 2100000, guid: 5ebf6150901e5fb46ad267168f69186d, type: 2}
+  - {fileID: 2100000, guid: d789d8be3aeb48a43b9713fc14b6a0f9, type: 2}

@@ -16,7 +16,7 @@ public enum Direction
 public class Player : MonoBehaviour
 {
     public GameObject KickSmoke;
-    public SkeletonAnimation SkelAnim;
+    public Animator SkelAnim;
     public Transform SkeletonParent;
     public float KickCooldown = .5f;
     public float KickAnim = .5f;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     {
         _gameStarted = true;
         _cooldown = KickCooldown;
-        SkelAnim.state.SetAnimation(0, "idle_front", false).TrackEnd = float.PositiveInfinity;
+        SkelAnim.Play("idle_front", 0, 0f);
     }
 
     public void EndGame()
@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "badFood")
         {
-            SkelAnim.state.SetAnimation(0, "hit_front", false);
-            SkelAnim.state.AddAnimation(0, "idle_front", true, 0.1667f);
+            SkelAnim.Play("hit_front", 0, 0f);
+            GameEvents.PlayerGetsHit();
         }
     }
 
@@ -114,17 +114,13 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(KickAnim/4f);
-
         var kickFX = Instantiate(KickSmoke, (movement/2), Quaternion.identity);
         kickFX.GetComponent<KickFx>().ConfigKickFx(movement, KickFxSpeed, KickDestroyTime);
 
         if(Random.Range(0,2) > 0)
-            SkelAnim.state.SetAnimation(0, "punch_front", false);
+            SkelAnim.Play("punch_front", 0, 0f);
         else
-            SkelAnim.state.SetAnimation(0, "kick_front", false);
-
-        SkelAnim.state.AddAnimation(0, "idle_front", true, 0.1667f);
+            SkelAnim.Play("kick_front", 0, 0f);
 
         yield return new WaitForSeconds(KickAnim);
 

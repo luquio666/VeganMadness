@@ -5,14 +5,18 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public Spawner[] Spawners;
-    public float MaxSpawnSpeed, MinSpawnSpeed = 3f;
-    public float MaxSpawnTime, MinSpawnTime;
+    float _maxSpawnSpeed, _minSpawnSpeed, _maxSpawnTime, _minSpawnTime;
     public GameObject[] Items;
     bool _gameStarted;
     Coroutine _spawnItemsCo;
 
-    public void StartGame()
+    public void StartGame(Waves wave)
     {
+        _maxSpawnSpeed = wave.MaxSpawnSpeed;
+        _minSpawnSpeed = wave.MinSpawnSpeed;
+        _maxSpawnTime = wave.MaxSpawnTime;
+        _minSpawnTime = wave.MinSpawnTime;
+
         _gameStarted = true;
         _spawnItemsCo = StartCoroutine(SpawnItemsCo());
     }
@@ -27,10 +31,10 @@ public class SpawnerController : MonoBehaviour
     {
         while (_gameStarted)
         {
-            float rndSpawnTime = Random.Range(MinSpawnTime, MaxSpawnTime);
+            float rndSpawnTime = Random.Range(_minSpawnTime, _maxSpawnTime);
             yield return new WaitForSeconds(rndSpawnTime);
 
-            var randomSpeed = Random.Range(MinSpawnSpeed, MaxSpawnSpeed);
+            var randomSpeed = Random.Range(_minSpawnSpeed, _maxSpawnSpeed);
             var randomItem = Items[Random.Range(0, Items.Length)];
             var randomSpawner = Spawners[Random.Range(0, Spawners.Length)];
 
